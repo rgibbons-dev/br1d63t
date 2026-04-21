@@ -3,7 +3,6 @@
   --panel: #e9cc7d;
   --text: #222;
   --muted: #575757;
-  --accent: #1f1f1f;
   --max-width: 1240px;
 }
 
@@ -48,46 +47,10 @@ a {
   display: flex;
   gap: 1.4rem;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .nav a {
   font-size: 1.75rem;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown > button {
-  border: 0;
-  background: none;
-  font: inherit;
-  font-size: 1.75rem;
-  cursor: pointer;
-  padding: 0;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 2rem;
-  right: 0;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  min-width: 10rem;
-  z-index: 10;
-}
-
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu a {
-  display: block;
-  font-size: 1.1rem;
-  padding: 0.55rem 0.7rem;
 }
 
 .container {
@@ -99,8 +62,15 @@ a {
 .hero-grid,
 .recipe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1.2rem;
+}
+
+@media (min-width: 900px) {
+  .hero-grid,
+  .recipe-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .recipe-card img,

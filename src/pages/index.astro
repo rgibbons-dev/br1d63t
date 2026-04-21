@@ -33,7 +33,7 @@ const seasonCards = [
       .filter((card) => seasons.includes(card.name.toLowerCase()))
       .map((card) => (
         <article class="season-card">
-          <a href={`/tags/${card.name.toLowerCase()}`}>
+          <a href="/all-recipes">
             <img src={card.image} alt={`${card.name} produce inspiration`} />
             <h3>{card.name}</h3>
           </a>
