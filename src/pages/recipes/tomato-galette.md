@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/BaseLayout.astro
 title: Heirloom Tomato Galette
 date: 2025-08-09
 season: summer
@@ -9,4 +10,35 @@ tags:
 image: https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1400&q=80
 ---
 
-Rustic summer galette layered with mustard, herbs, and ripe tomatoes.
+<article class="recipe-post">
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1400&q=80" alt="Heirloom Tomato Galette" />
+
+<h1>Heirloom Tomato Galette</h1>
+<p class="recipe-meta">Summer · Serves 6</p>
+
+A rough puff-style galette with mustard, parmesan, and ripe sliced tomatoes.
+
+## Ingredients
+
+- 320g ready-rolled all-butter puff pastry
+- 2 tbsp Dijon mustard
+- 35g finely grated parmesan
+- 4 medium heirloom tomatoes, sliced
+- 1 tbsp olive oil
+- 1 tsp thyme leaves
+- 1 egg, beaten
+- Sea salt and black pepper
+
+## Method
+
+1. Heat oven to 210°C and line a tray.
+2. Lay pastry out and score a 3cm border.
+3. Spread mustard inside the border and sprinkle with parmesan.
+4. Layer tomatoes, season, and drizzle with olive oil.
+5. Fold edges inward, brush with egg, and scatter thyme.
+6. Bake 30–35 minutes until deeply golden.
+
+## Notes
+
+Let the galette cool for 15 minutes before slicing so the juices settle.
+</article>

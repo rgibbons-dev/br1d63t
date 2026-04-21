@@ -1,9 +1,6 @@
 ---
-import { slugify } from '../data';
-
 const { recipe } = Astro.props;
 const season = recipe.frontmatter.season;
-const tags = recipe.frontmatter.tags ?? [];
 ---
 
 <article class="recipe-card">
@@ -12,9 +9,4 @@ const tags = recipe.frontmatter.tags ?? [];
     <h3>{recipe.frontmatter.title}</h3>
   </a>
   <p class="recipe-meta">{season}</p>
-  <div class="tags">
-    {tags.map((tag: string) => (
-      <a class="tag" href={`/tags/${slugify(tag)}`}>{tag}</a>
-    ))}
-  </div>
 </article>
