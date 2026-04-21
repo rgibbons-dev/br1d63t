@@ -11,9 +11,9 @@ image: https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&
 ---
 
 <article class="recipe-post">
-<img class="recipe-hero" src={frontmatter.image} alt={frontmatter.title} />
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=1400&q=80" alt="Blood Orange Olive Oil Cake" />
 
-<h1>{frontmatter.title}</h1>
+<h1>Blood Orange Olive Oil Cake</h1>
 <p class="recipe-meta">Winter · One 23cm cake</p>
 
 Olive oil keeps this cake plush for days while blood orange adds a gently bitter perfume.

@@ -11,9 +11,9 @@ image: https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit
 ---
 
 <article class="recipe-post">
-<img class="recipe-hero" src={frontmatter.image} alt={frontmatter.title} />
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=80" alt="Crispy Mushroom Toasts" />
 
-<h1>{frontmatter.title}</h1>
+<h1>Crispy Mushroom Toasts</h1>
 <p class="recipe-meta">Fall · Serves 4</p>
 
 Mushrooms are cooked hard for color, then finished with garlic, thyme, and lemon.

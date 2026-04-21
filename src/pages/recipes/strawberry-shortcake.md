@@ -11,9 +11,9 @@ image: https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&
 ---
 
 <article class="recipe-post">
-<img class="recipe-hero" src={frontmatter.image} alt={frontmatter.title} />
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=1400&q=80" alt="Strawberry Shortcake" />
 
-<h1>{frontmatter.title}</h1>
+<h1>Strawberry Shortcake</h1>
 <p class="recipe-meta">Spring · Serves 6</p>
 
 The berries are lightly macerated with lemon and sugar so the juices soak into warm split biscuits.

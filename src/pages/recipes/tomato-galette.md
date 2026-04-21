@@ -11,9 +11,9 @@ image: https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&
 ---
 
 <article class="recipe-post">
-<img class="recipe-hero" src={frontmatter.image} alt={frontmatter.title} />
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1400&q=80" alt="Heirloom Tomato Galette" />
 
-<h1>{frontmatter.title}</h1>
+<h1>Heirloom Tomato Galette</h1>
 <p class="recipe-meta">Summer · Serves 6</p>
 
 A rough puff-style galette with mustard, parmesan, and ripe sliced tomatoes.

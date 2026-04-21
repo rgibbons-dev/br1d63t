@@ -11,9 +11,9 @@ image: https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&
 ---
 
 <article class="recipe-post">
-<img class="recipe-hero" src={frontmatter.image} alt={frontmatter.title} />
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=1400&q=80" alt="Citrus Braised Chicken" />
 
-<h1>{frontmatter.title}</h1>
+<h1>Citrus Braised Chicken</h1>
 <p class="recipe-meta">Winter · Serves 4</p>
 
 Chicken thighs braised with orange, lemon, garlic, and olives for a bright winter supper.

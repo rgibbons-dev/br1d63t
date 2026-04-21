@@ -11,9 +11,9 @@ image: https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&
 ---
 
 <article class="recipe-post">
-<img class="recipe-hero" src={frontmatter.image} alt={frontmatter.title} />
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1400&q=80" alt="Spring Pea Risotto" />
 
-<h1>{frontmatter.title}</h1>
+<h1>Spring Pea Risotto</h1>
 <p class="recipe-meta">Spring · Serves 4</p>
 
 A soft, lemony risotto with peas and herbs; it should settle slowly on the plate.

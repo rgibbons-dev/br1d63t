@@ -11,9 +11,9 @@ image: https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit
 ---
 
 <article class="recipe-post">
-<img class="recipe-hero" src={frontmatter.image} alt={frontmatter.title} />
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1400&q=80" alt="Roasted Squash Soup" />
 
-<h1>{frontmatter.title}</h1>
+<h1>Roasted Squash Soup</h1>
 <p class="recipe-meta">Fall · Serves 4 to 6</p>
 
 Roasting the squash first deepens the flavor and keeps the soup silky, not watery.

@@ -11,9 +11,9 @@ image: https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&
 ---
 
 <article class="recipe-post">
-<img class="recipe-hero" src={frontmatter.image} alt={frontmatter.title} />
+<img class="recipe-hero" src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1400&q=80" alt="Charred Corn Salad" />
 
-<h1>{frontmatter.title}</h1>
+<h1>Charred Corn Salad</h1>
 <p class="recipe-meta">Summer · Serves 4</p>
 
 Sweet corn is charred in a dry pan, then tossed with lime, herbs, and salty cheese.
