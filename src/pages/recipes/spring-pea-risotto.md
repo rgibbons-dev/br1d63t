@@ -10,7 +10,6 @@ tags:
 image: https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1400&q=80
 imageAlt: Creamy pea risotto finished with herbs and lemon
 intro: A soft, lemony risotto with peas and herbs; it should settle slowly on the plate.
-description: Light enough for spring, but still as comforting as risotto should be.
 serves: Serves 4
 prepTime: 15 min
 cookTime: 30 min

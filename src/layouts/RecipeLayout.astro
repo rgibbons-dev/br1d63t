@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { formatSeason, slugify } from '../data';
-import { getRecipeBySlug, getRelatedRecipes } from '../lib/recipes';
+import { slugify } from '../data';
 
 const frontmatter = Astro.props.frontmatter ?? Astro.props;
 
@@ -9,72 +8,86 @@ const {
   title,
   image,
   imageAlt = title,
-  season,
   tags = [],
-  date,
   intro,
-  serves,
-  prepTime,
-  cookTime,
-  description
 } = frontmatter;
 
-const slug = Astro.url.pathname.split('/').filter(Boolean).pop() ?? '';
-const currentRecipe = getRecipeBySlug(slug);
-const relatedRecipes = currentRecipe ? getRelatedRecipes(currentRecipe) : [];
+const renderedContent = await Astro.slots.render('default');
+const headingMatches = Array.from(renderedContent.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi));
+const stripTags = (value: string) => value.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim().toLowerCase();
 
-const metadata = [season ? formatSeason(season) : null, serves, prepTime && `Prep ${prepTime}`, cookTime && `Cook ${cookTime}`]
-  .filter(Boolean)
-  .join('  /  ');
+const preamble = headingMatches.length > 0
+  ? renderedContent.slice(0, headingMatches[0].index).trim()
+  : renderedContent.trim();
+
+const sections = headingMatches.map((match, index) => {
+  const start = match.index ?? 0;
+  const end = headingMatches[index + 1]?.index ?? renderedContent.length;
+
+  return {
+    title: stripTags(match[1]),
+    html: renderedContent.slice(start, end).trim()
+  };
+});
+
+const ingredientsIndex = sections.findIndex((section) => section.title.includes('ingredient'));
+const instructionsIndex = sections.findIndex((section) =>
+  /(method|instruction|direction|preparation)/.test(section.title)
+);
+
+const ingredientsSection =
+  (ingredientsIndex >= 0 && sections[ingredientsIndex]) ??
+  (sections.length > 0 ? sections[0] : null);
+
+const instructionsSection =
+  (instructionsIndex >= 0 && sections[instructionsIndex]) ??
+  sections.find((_, index) => index !== ingredientsIndex) ??
+  null;
+
+const remainingSections = sections.filter(
+  (_, index) => index !== ingredientsIndex && index !== instructionsIndex
+);
 ---
 
-<BaseLayout title={`${title} | Bridget Recipes`} description={description ?? intro}>
+<BaseLayout title={`${title} | Bridget Recipes`} description={intro}>
   <article class="recipe-article">
-    <section class="recipe-heading">
-      <div class="recipe-copy">
-        {tags.length > 0 && (
-          <p class="recipe-tag-line">
-            {tags.map((tag: string, index: number) => (
-              <>
-                <a href={`/tags/${slugify(tag)}`}>{tag}</a>{index < tags.length - 1 && ' • '}
-              </>
-            ))}
-          </p>
+    <div class="recipe-frame">
+      <section class="recipe-heading">
+        <div class="recipe-copy">
+          {tags.length > 0 && (
+            <p class="recipe-tag-line">
+              {tags.map((tag: string, index: number) => (
+                <>
+                  <a href={`/tags/${slugify(tag)}`}>{tag}</a>{index < tags.length - 1 && ' • '}
+                </>
+              ))}
+            </p>
+          )}
+          <h1>{title}</h1>
+        </div>
+      </section>
+
+      <section class="recipe-shell">
+        <figure class="recipe-figure">
+          <img class="recipe-hero" src={image} alt={imageAlt} />
+        </figure>
+
+        {ingredientsSection && (
+          <div class="recipe-sidebar">
+            <section class="recipe-body prose-flow recipe-section" set:html={ingredientsSection.html} />
+          </div>
         )}
-        <h1>{title}</h1>
-        <p class="recipe-detail-line">{metadata}</p>
-      </div>
-    </section>
 
-    <section class="recipe-shell">
-      <figure class="recipe-figure">
-        <img class="recipe-hero" src={image} alt={imageAlt} />
-      </figure>
-
-      <div class="recipe-body prose-flow">
-        <slot />
-      </div>
-    </section>
+        <div class="recipe-main">
+          {preamble && <div class="recipe-body prose-flow" set:html={preamble} />}
+          {instructionsSection && (
+            <section class="recipe-body prose-flow recipe-section" set:html={instructionsSection.html} />
+          )}
+          {remainingSections.map((section) => (
+            <section class="recipe-body prose-flow recipe-section" set:html={section.html} />
+          ))}
+        </div>
+      </section>
+    </div>
   </article>
-
-  {relatedRecipes.length > 0 && (
-    <section class="related-section">
-      <div class="recipe-grid four-up-grid">
-        {relatedRecipes.map((recipe) => (
-          <article class="recipe-card">
-            <a href={recipe.url}>
-              <img
-                src={recipe.frontmatter.image}
-                alt={recipe.frontmatter.imageAlt ?? recipe.frontmatter.title}
-                loading="lazy"
-              />
-              <div class="recipe-card-copy">
-                <h3>{recipe.frontmatter.title}</h3>
-              </div>
-            </a>
-          </article>
-        ))}
-      </div>
-    </section>
-  )}
 </BaseLayout>

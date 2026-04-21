@@ -10,7 +10,6 @@ export type RecipeModule = {
     image: string;
     imageAlt?: string;
     intro?: string;
-    description?: string;
     serves?: string;
     prepTime?: string;
     cookTime?: string;
@@ -74,10 +73,6 @@ export const seasonShowcase = seasons.map((season) => {
   };
 });
 
-export function getRecipeBySlug(slug: string) {
-  return recipes.find((recipe) => recipe.url.replace(/^\/|\/$/g, '').endsWith(slug));
-}
-
 export function getRecipesByTag(tag: string) {
   const normalized = slugify(tag);
   return recipes.filter((recipe) => {
@@ -87,21 +82,4 @@ export function getRecipesByTag(tag: string) {
       tags.some((entry) => slugify(entry) === normalized)
     );
   });
-}
-
-export function getRelatedRecipes(recipe: RecipeModule, count = 3) {
-  const currentTags = new Set([recipe.frontmatter.season, ...(recipe.frontmatter.tags ?? [])]);
-
-  return recipes
-    .filter((entry) => entry.url !== recipe.url)
-    .map((entry) => {
-      const shared = [entry.frontmatter.season, ...(entry.frontmatter.tags ?? [])].filter((tag) =>
-        currentTags.has(tag)
-      ).length;
-      return { entry, shared };
-    })
-    .filter(({ shared }) => shared > 0)
-    .sort((a, b) => b.shared - a.shared)
-    .slice(0, count)
-    .map(({ entry }) => entry);
 }

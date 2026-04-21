@@ -11,7 +11,6 @@ tags:
 image: https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1400&q=80
 imageAlt: A bowl of roasted squash soup with brown butter and sage
 intro: Roasting the squash first deepens the flavour and keeps the soup silky, not watery.
-description: A good fridge recipe for the middle of the week, especially when bread is involved.
 serves: Serves 4 to 6
 prepTime: 20 min
 cookTime: 40 min

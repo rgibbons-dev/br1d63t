@@ -11,7 +11,6 @@ tags:
 image: https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=1400&q=80
 imageAlt: Roasted chicken thighs with citrus and olives in a braising dish
 intro: Chicken thighs braised with orange, lemon, garlic, and olives for a bright winter supper.
-description: The pan sauce lands somewhere between sharp, savoury, and glossy enough to want bread nearby.
 serves: Serves 4
 prepTime: 20 min
 cookTime: 45 min

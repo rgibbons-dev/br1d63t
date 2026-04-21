@@ -11,7 +11,6 @@ tags:
 image: https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=80
 imageAlt: A bowl of warm vegetables and greens for a weeknight dinner
 intro: Leeks are cooked until properly dark at the edges, then folded through creamy butter beans with herbs.
-description: Pantry-friendly, quick, and soft in all the right places.
 serves: Serves 3 to 4
 prepTime: 15 min
 cookTime: 20 min

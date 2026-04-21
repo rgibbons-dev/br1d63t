@@ -10,7 +10,6 @@ tags:
 image: https://images.unsplash.com/photo-1510693206972-df098062cb71?auto=format&fit=crop&w=1400&q=80
 imageAlt: A skillet frittata with herbs and cheese
 intro: A tender stovetop-and-oven frittata with dill, parsley, and soft cheese folded through.
-description: Useful warm or cold, and especially good cut into wedges for a picnic.
 serves: Serves 4
 prepTime: 15 min
 cookTime: 18 min

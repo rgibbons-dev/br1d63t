@@ -10,7 +10,6 @@ tags:
 image: https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1400&q=80
 imageAlt: A rustic tomato galette on a baking tray
 intro: A rough puff-style galette with mustard, parmesan, and ripe sliced tomatoes.
-description: Summer pastry with a loose hand, meant to be sliced on a board and passed around.
 serves: Serves 6
 prepTime: 20 min
 cookTime: 35 min

@@ -11,7 +11,6 @@ tags:
 image: https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=80
 imageAlt: Crisp toast topped with browned mushrooms and herbs
 intro: Mushrooms are cooked hard for color, then finished with garlic, thyme, and lemon.
-description: A small, deeply savoury recipe that feels like the first real sign of colder weather.
 serves: Serves 4
 prepTime: 15 min
 cookTime: 15 min

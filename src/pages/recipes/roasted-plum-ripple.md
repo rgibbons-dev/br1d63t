@@ -10,7 +10,6 @@ tags:
 image: https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=1400&q=80
 imageAlt: Fruit dessert served on plates
 intro: Roasted plums collapse into a sharp-sweet syrup that stains yogurt and cream beautifully.
-description: Barely a recipe, really, but exactly the kind that earns its keep.
 serves: Serves 4
 prepTime: 10 min
 cookTime: 25 min

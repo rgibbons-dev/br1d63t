@@ -10,7 +10,6 @@ tags:
 image: https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=1400&q=80
 imageAlt: Rice noodles in a coconut broth with herbs and lime
 intro: Slippery noodles in a bright coconut broth with lime, ginger, and plenty of herbs.
-description: The sort of dinner that feels reviving without asking much of you.
 serves: Serves 4
 prepTime: 15 min
 cookTime: 20 min

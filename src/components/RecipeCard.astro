@@ -1,8 +1,5 @@
 ---
-import { formatSeason } from '../data';
-
 const { recipe } = Astro.props;
-const season = recipe.frontmatter.season;
 ---
 
 <article class="recipe-card">
@@ -13,7 +10,6 @@ const season = recipe.frontmatter.season;
       loading="lazy"
     />
     <div class="recipe-card-copy">
-      <p class="recipe-kicker">{formatSeason(season)}</p>
       <h3>{recipe.frontmatter.title}</h3>
     </div>
   </a>
