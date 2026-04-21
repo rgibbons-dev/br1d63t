@@ -1,9 +1,9 @@
 :root {
-  --bg: #efede7;
-  --panel: #e9cc7d;
+  --bg: #f6f4ef;
+  --panel: #e9d8ae;
   --text: #222;
   --muted: #575757;
-  --max-width: 1240px;
+  --max-width: 1120px;
 }
 
 * {
@@ -12,9 +12,10 @@
 
 body {
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
   color: var(--text);
   background: var(--bg);
+  line-height: 1.6;
 }
 
 a {
@@ -24,7 +25,7 @@ a {
 
 .site-header {
   background: var(--panel);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .header-inner {
@@ -50,7 +51,7 @@ a {
 }
 
 .nav a {
-  font-size: 1.75rem;
+  font-size: 1.4rem;
 }
 
 .container {
@@ -74,7 +75,8 @@ a {
 }
 
 .recipe-card img,
-.season-card img {
+.season-card img,
+.recipe-hero {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
@@ -85,7 +87,7 @@ a {
 .season-card h3 {
   text-align: center;
   margin: 0.8rem 0 0;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 400;
 }
 
@@ -96,26 +98,40 @@ a {
   margin-top: 0.35rem;
 }
 
-.tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 0.65rem;
-}
-
-.tag {
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 999px;
-  padding: 0.15rem 0.65rem;
-  font-size: 0.95rem;
-  background: #fff;
-}
-
 h1 {
   font-weight: 400;
   font-size: 2.4rem;
   margin-top: 0;
+}
+
+.recipe-post {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.recipe-post h1 {
+  margin-bottom: 0.4rem;
+}
+
+.recipe-post .recipe-meta {
+  text-align: left;
+  margin: 0 0 1.25rem;
+}
+
+.recipe-post h2 {
+  margin-top: 2rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.recipe-post ul,
+.recipe-post ol {
+  padding-left: 1.2rem;
+}
+
+.recipe-post p,
+.recipe-post li {
+  font-size: 1.05rem;
 }
 
 .site-footer {
