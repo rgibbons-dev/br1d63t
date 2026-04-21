@@ -15,5 +15,6 @@
         "ms-vscode-remote.remote-containers"
       ]
     }
-  }
+  },
+  "postCreateCommand": "npm ci && uv venv && . .venv/bin/activate && uv pip install showboat rodney"
 }
