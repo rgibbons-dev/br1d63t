@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+
+const recipes = await Astro.glob('../pages/recipes/*.md');
+const sorted = recipes.sort(
+  (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+);
+---
+
+<BaseLayout title="All Recipes | Bridget Recipes">
+  <h1>All Recipes</h1>
+  <div class="recipe-grid">
+    {sorted.map((recipe) => (
+      <RecipeCard recipe={recipe} />
+    ))}
+  </div>
+</BaseLayout>

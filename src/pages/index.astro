@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { seasons } from '../data';
+
+const seasonCards = [
+  {
+    name: 'Spring',
+    image:
+      'https://images.unsplash.com/photo-1614690952615-b6ef4a7e1dbf?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    name: 'Summer',
+    image:
+      'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    name: 'Fall',
+    image:
+      'https://images.unsplash.com/photo-1507371341162-763b5e419408?auto=format&fit=crop&w=1200&q=80'
+  },
+  {
+    name: 'Winter',
+    image:
+      'https://images.unsplash.com/photo-1486946255434-2466348c2166?auto=format&fit=crop&w=1200&q=80'
+  }
+];
+---
+
+<BaseLayout title="Bridget Recipes">
+  <h1>Seasonal cooking, big flavors.</h1>
+  <div class="hero-grid">
+    {seasonCards
+      .filter((card) => seasons.includes(card.name.toLowerCase()))
+      .map((card) => (
+        <article class="season-card">
+          <a href={`/tags/${card.name.toLowerCase()}`}>
+            <img src={card.image} alt={`${card.name} produce inspiration`} />
+            <h3>{card.name}</h3>
+          </a>
+        </article>
+      ))}
+  </div>
+</BaseLayout>

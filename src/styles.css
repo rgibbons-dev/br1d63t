@@ -1,0 +1,154 @@
+:root {
+  --bg: #efede7;
+  --panel: #e9cc7d;
+  --text: #222;
+  --muted: #575757;
+  --accent: #1f1f1f;
+  --max-width: 1240px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  background: var(--panel);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 1.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  font-size: 1.75rem;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > button {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 1.75rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  min-width: 10rem;
+  z-index: 10;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  font-size: 1.1rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.hero-grid,
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.2rem;
+}
+
+.recipe-card img,
+.season-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-card h3,
+.season-card h3 {
+  text-align: center;
+  margin: 0.8rem 0 0;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.recipe-meta {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 0.35rem;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.65rem;
+}
+
+.tag {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 2.4rem;
+  margin-top: 0;
+}
+
+.site-footer {
+  min-height: 72px;
+  background: #e8c463;
+}
