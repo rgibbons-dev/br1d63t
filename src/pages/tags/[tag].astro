@@ -1,34 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RecipeCard from '../../components/RecipeCard.astro';
-import { slugify } from '../../data';
+import { formatSeason, slugify } from '../../data';
+import { allTags, getRecipesByTag } from '../../lib/recipes';
 
 export async function getStaticPaths() {
-  const recipes = await Astro.glob('../../pages/recipes/*.md');
-  const uniqueTags = new Set<string>();
-
-  for (const recipe of recipes) {
-    const recipeTags: string[] = recipe.frontmatter.tags ?? [];
-    recipeTags.forEach((tag) => uniqueTags.add(tag));
-    uniqueTags.add(recipe.frontmatter.season);
-  }
-
-  return Array.from(uniqueTags).map((tag) => ({
+  return allTags.map((tag) => ({
     params: { tag: slugify(tag) },
     props: { tag }
   }));
 }
 
 const { tag } = Astro.props;
-const recipes = await Astro.glob('../../pages/recipes/*.md');
-const filtered = recipes.filter((recipe) => {
-  const tags: string[] = recipe.frontmatter.tags ?? [];
-  return slugify(recipe.frontmatter.season) === Astro.params.tag || tags.some((t) => slugify(t) === Astro.params.tag);
-});
+const filtered = getRecipesByTag(Astro.params.tag ?? tag);
 ---
 
 <BaseLayout title={`${tag} | Bridget Recipes`}>
-  <h1>{tag}</h1>
+  <section class="page-intro">
+    <p class="eyebrow">Browse Tag</p>
+    <h1>{formatSeason(tag)}</h1>
+    <p>{filtered.length} recipe{filtered.length === 1 ? '' : 's'} gathered here.</p>
+  </section>
+
   <div class="recipe-grid">
     {filtered.map((recipe) => (
       <RecipeCard recipe={recipe} />

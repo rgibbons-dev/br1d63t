@@ -1,7 +1,10 @@
 ---
 import '../styles.css';
 
-const { title = 'Bridget Recipes' } = Astro.props;
+const {
+  title = 'Bridget Recipes',
+  description = 'A quiet collection of seasonal recipes, cakes, soups, salads, and simple dinners.'
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -10,11 +13,15 @@ const { title = 'Bridget Recipes' } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="description" content={description} />
   </head>
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a href="/" class="logo">Bridget</a>
+        <a href="/" class="logo">
+          <span class="logo-mark">Bridget</span>
+          <span class="logo-subtitle">recipes and seasonal notes</span>
+        </a>
         <nav class="nav" aria-label="Main">
           <a href="/">Home</a>
           <a href="/all-recipes">All Recipes</a>
@@ -26,6 +33,10 @@ const { title = 'Bridget Recipes' } = Astro.props;
       <slot />
     </main>
 
-    <footer class="site-footer"></footer>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>For long lunches, weeknight dinners, and the kind of cake worth putting the kettle on for.</p>
+      </div>
+    </footer>
   </body>
 </html>

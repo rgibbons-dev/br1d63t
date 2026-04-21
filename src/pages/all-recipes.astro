@@ -1,17 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RecipeCard from '../components/RecipeCard.astro';
-
-const recipes = await Astro.glob('../pages/recipes/*.md');
-const sorted = recipes.sort(
-  (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
-);
+import { allTags, recipes } from '../lib/recipes';
 ---
 
 <BaseLayout title="All Recipes | Bridget Recipes">
-  <h1>All Recipes</h1>
+  <section class="page-intro">
+    <p class="eyebrow">All Recipes</p>
+    <h1>The full collection</h1>
+    <p>
+      Every recipe in one place, ordered by date and cross-linked by season and ingredient.
+    </p>
+  </section>
+
+  <ul class="tag-list page-tags" aria-label="Browse tags">
+    {allTags.map((tag) => (
+      <li>
+        <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}>{tag}</a>
+      </li>
+    ))}
+  </ul>
+
   <div class="recipe-grid">
-    {sorted.map((recipe) => (
+    {recipes.map((recipe) => (
       <RecipeCard recipe={recipe} />
     ))}
   </div>

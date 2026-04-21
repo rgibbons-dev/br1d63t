@@ -1,43 +1,104 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { seasons } from '../data';
+import RecipeCard from '../components/RecipeCard.astro';
+import { formatSeason } from '../data';
+import { browseCollections, featuredRecipes, latestRecipes, recipeCountsBySeason } from '../lib/recipes';
 
-const seasonCards = [
-  {
-    name: 'Spring',
-    image:
-      'https://images.unsplash.com/photo-1614690952615-b6ef4a7e1dbf?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    name: 'Summer',
-    image:
-      'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    name: 'Fall',
-    image:
-      'https://images.unsplash.com/photo-1507371341162-763b5e419408?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    name: 'Winter',
-    image:
-      'https://images.unsplash.com/photo-1486946255434-2466348c2166?auto=format&fit=crop&w=1200&q=80'
-  }
-];
+const leadRecipe = featuredRecipes[0] ?? latestRecipes[0];
+const supportingRecipes = featuredRecipes.slice(1, 3);
 ---
 
 <BaseLayout title="Bridget Recipes">
-  <h1>Seasonal cooking, big flavors.</h1>
-  <div class="hero-grid">
-    {seasonCards
-      .filter((card) => seasons.includes(card.name.toLowerCase()))
-      .map((card) => (
-        <article class="season-card">
-          <a href="/all-recipes">
-            <img src={card.image} alt={`${card.name} produce inspiration`} />
-            <h3>{card.name}</h3>
+  <section class="home-intro">
+    <p class="eyebrow">Bridget Recipes</p>
+    <div class="home-intro-grid">
+      <div>
+        <h1>Minimal, bright, and made for returning to.</h1>
+      </div>
+      <p class="home-intro-copy">
+        A collection of weeknight dinners, baking projects, and seasonal recipes with an editorial,
+        photo-led rhythm. The feeling is calm and spare, but still warm enough to live in.
+      </p>
+    </div>
+  </section>
+
+  {leadRecipe && (
+    <section class="feature-story">
+      <a class="feature-image-link" href={leadRecipe.url}>
+        <img
+          class="feature-image"
+          src={leadRecipe.frontmatter.image}
+          alt={leadRecipe.frontmatter.imageAlt ?? leadRecipe.frontmatter.title}
+        />
+      </a>
+      <div class="feature-copy">
+        <p class="eyebrow">Featured Recipe</p>
+        <h2>
+          <a href={leadRecipe.url}>{leadRecipe.frontmatter.title}</a>
+        </h2>
+        <p class="feature-meta">
+          {formatSeason(leadRecipe.frontmatter.season)}  /  {leadRecipe.frontmatter.serves}  /  Prep{' '}
+          {leadRecipe.frontmatter.prepTime}
+        </p>
+        <p class="feature-summary">{leadRecipe.frontmatter.intro}</p>
+        <p class="feature-description">{leadRecipe.frontmatter.description ?? leadRecipe.frontmatter.intro}</p>
+        <a class="text-link" href={leadRecipe.url}>Read recipe</a>
+      </div>
+    </section>
+  )}
+
+  <section class="split-section">
+    <div class="section-heading">
+      <p class="eyebrow">This Week</p>
+      <h2>Freshly added recipes</h2>
+    </div>
+    <div class="recipe-grid">
+      {latestRecipes.slice(0, 4).map((recipe) => (
+        <RecipeCard recipe={recipe} />
+      ))}
+    </div>
+  </section>
+
+  <section class="home-rail">
+    <div class="section-heading">
+      <p class="eyebrow">Browse</p>
+      <h2>Choose a way in.</h2>
+    </div>
+
+    <div class="collection-grid">
+      {browseCollections.map((collection) => (
+        <article class="collection-card">
+          <p class="collection-index">{collection.title}</p>
+          <p>{collection.description}</p>
+          <a class="text-link" href={`/tags/${collection.tag}`}>Open collection</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="season-band">
+    {recipeCountsBySeason.map(({ season, count }) => (
+      <a class="season-pill" href={`/tags/${season}`}>
+        <span>{formatSeason(season)}</span>
+        <small>{count} recipes</small>
+      </a>
+    ))}
+  </section>
+
+  {supportingRecipes.length > 0 && (
+    <section class="split-story-grid">
+      {supportingRecipes.map((recipe) => (
+        <article class="secondary-feature">
+          <a href={recipe.url}>
+            <img src={recipe.frontmatter.image} alt={recipe.frontmatter.imageAlt ?? recipe.frontmatter.title} />
+            <div class="secondary-feature-copy">
+              <p class="recipe-kicker">{formatSeason(recipe.frontmatter.season)}</p>
+              <h3>{recipe.frontmatter.title}</h3>
+              <p>{recipe.frontmatter.intro}</p>
+            </div>
           </a>
         </article>
       ))}
-  </div>
+    </section>
+  )}
 </BaseLayout>

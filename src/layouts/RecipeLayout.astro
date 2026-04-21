@@ -1,0 +1,89 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { formatSeason } from '../data';
+import { getRecipeBySlug, getRelatedRecipes } from '../lib/recipes';
+
+const frontmatter = Astro.props.frontmatter ?? Astro.props;
+
+const {
+  title,
+  image,
+  imageAlt = title,
+  season,
+  tags = [],
+  date,
+  intro,
+  serves,
+  prepTime,
+  cookTime,
+  description
+} = frontmatter;
+
+const slug = Astro.url.pathname.split('/').filter(Boolean).pop() ?? '';
+const currentRecipe = getRecipeBySlug(slug);
+const relatedRecipes = currentRecipe ? getRelatedRecipes(currentRecipe) : [];
+
+const metadata = [season ? formatSeason(season) : null, serves, prepTime && `Prep ${prepTime}`, cookTime && `Cook ${cookTime}`]
+  .filter(Boolean)
+  .join('  /  ');
+---
+
+<BaseLayout title={`${title} | Bridget Recipes`} description={description ?? intro}>
+  <article class="recipe-article">
+    <section class="recipe-shell">
+      <div class="recipe-copy">
+        <p class="eyebrow">Recipe</p>
+        <h1>{title}</h1>
+        {intro && <p class="recipe-lead">{intro}</p>}
+        <p class="recipe-detail-line">{metadata}</p>
+
+        {tags.length > 0 && (
+          <ul class="tag-list" aria-label="Recipe tags">
+            {tags.map((tag: string) => (
+              <li>
+                <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}>{tag}</a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <figure class="recipe-figure">
+        <img class="recipe-hero" src={image} alt={imageAlt} />
+        <figcaption>{new Date(date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</figcaption>
+      </figure>
+    </section>
+
+    <div class="recipe-body prose-flow">
+      <slot />
+    </div>
+  </article>
+
+  {relatedRecipes.length > 0 && (
+    <section class="related-section">
+      <div class="section-heading">
+        <p class="eyebrow">Cook Next</p>
+        <h2>You might want one of these nearby too.</h2>
+      </div>
+
+      <div class="recipe-grid compact-grid">
+        {relatedRecipes.map((recipe) => (
+          <article class="recipe-card">
+            <a href={recipe.url}>
+              <img
+                src={recipe.frontmatter.image}
+                alt={recipe.frontmatter.imageAlt ?? recipe.frontmatter.title}
+                loading="lazy"
+              />
+              <div class="recipe-card-copy">
+                <p class="recipe-kicker">{formatSeason(recipe.frontmatter.season)}</p>
+                <h3>{recipe.frontmatter.title}</h3>
+                {recipe.frontmatter.intro && <p class="recipe-summary">{recipe.frontmatter.intro}</p>}
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>

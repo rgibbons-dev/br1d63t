@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BaseLayout.astro
+layout: ../../layouts/RecipeLayout.astro
 title: Citrus Braised Chicken
 date: 2026-01-26
 season: winter
@@ -7,16 +7,16 @@ tags:
   - chicken
   - comfort
   - one-pot
+  - weeknight
 image: https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=1400&q=80
+imageAlt: Roasted chicken thighs with citrus and olives in a braising dish
+intro: Chicken thighs braised with orange, lemon, garlic, and olives for a bright winter supper.
+description: The pan sauce lands somewhere between sharp, savoury, and glossy enough to want bread nearby.
+serves: Serves 4
+prepTime: 20 min
+cookTime: 45 min
+featured: true
 ---
-
-<article class="recipe-post">
-<img class="recipe-hero" src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=1400&q=80" alt="Citrus Braised Chicken" />
-
-<h1>Citrus Braised Chicken</h1>
-<p class="recipe-meta">Winter · Serves 4</p>
-
-Chicken thighs braised with orange, lemon, garlic, and olives for a bright winter supper.
 
 ## Ingredients
 
@@ -36,11 +36,10 @@ Chicken thighs braised with orange, lemon, garlic, and olives for a bright winte
 1. Brown chicken thighs skin-side down in olive oil, then set aside.
 2. Soften onion and garlic in the same pan.
 3. Add citrus zest, juices, and stock; bring to a simmer.
-4. Return chicken, cover, and braise at 180°C for 35 minutes.
-5. Uncover, add olives, and roast 10 minutes more to crisp skin.
+4. Return chicken, cover, and braise at 180 C for 35 minutes.
+5. Uncover, add olives, and roast 10 minutes more to crisp the skin.
 6. Finish with dill and a squeeze of lemon.
 
 ## Notes
 
 Serve with rice, couscous, or thick slices of bread.
-</article>

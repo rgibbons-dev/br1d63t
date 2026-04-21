@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BaseLayout.astro
+layout: ../../layouts/RecipeLayout.astro
 title: Crispy Mushroom Toasts
 date: 2025-11-06
 season: fall
@@ -7,16 +7,15 @@ tags:
   - mushrooms
   - appetizer
   - vegetarian
+  - lunch
 image: https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=80
+imageAlt: Crisp toast topped with browned mushrooms and herbs
+intro: Mushrooms are cooked hard for color, then finished with garlic, thyme, and lemon.
+description: A small, deeply savoury recipe that feels like the first real sign of colder weather.
+serves: Serves 4
+prepTime: 15 min
+cookTime: 15 min
 ---
-
-<article class="recipe-post">
-<img class="recipe-hero" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=80" alt="Crispy Mushroom Toasts" />
-
-<h1>Crispy Mushroom Toasts</h1>
-<p class="recipe-meta">Fall · Serves 4</p>
-
-Mushrooms are cooked hard for color, then finished with garlic, thyme, and lemon.
 
 ## Ingredients
 
@@ -33,11 +32,10 @@ Mushrooms are cooked hard for color, then finished with garlic, thyme, and lemon
 
 1. Toast the sourdough until deeply golden.
 2. Sear mushrooms in olive oil over high heat until browned.
-3. Lower heat, add butter, garlic, and thyme; cook 1 minute.
+3. Lower the heat, add butter, garlic, and thyme; cook 1 minute.
 4. Finish with lemon juice, parsley, and black pepper.
 5. Spoon onto toast and serve immediately.
 
 ## Notes
 
-Rub warm toast with a cut garlic clove before topping for extra flavor.
-</article>
+Rub warm toast with a cut garlic clove before topping for extra depth.

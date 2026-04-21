@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BaseLayout.astro
+layout: ../../layouts/RecipeLayout.astro
 title: Spring Pea Risotto
 date: 2026-03-17
 season: spring
@@ -8,15 +8,14 @@ tags:
   - rice
   - weeknight
 image: https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1400&q=80
+imageAlt: Creamy pea risotto finished with herbs and lemon
+intro: A soft, lemony risotto with peas and herbs; it should settle slowly on the plate.
+description: Light enough for spring, but still as comforting as risotto should be.
+serves: Serves 4
+prepTime: 15 min
+cookTime: 30 min
+featured: true
 ---
-
-<article class="recipe-post">
-<img class="recipe-hero" src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1400&q=80" alt="Spring Pea Risotto" />
-
-<h1>Spring Pea Risotto</h1>
-<p class="recipe-meta">Spring · Serves 4</p>
-
-A soft, lemony risotto with peas and herbs; it should settle slowly on the plate.
 
 ## Ingredients
 
@@ -38,9 +37,8 @@ A soft, lemony risotto with peas and herbs; it should settle slowly on the plate
 3. Add wine and cook until almost absorbed.
 4. Add stock a ladle at a time, stirring often, for about 18 minutes.
 5. Fold in peas for the final 3 minutes.
-6. Off heat, beat in parmesan, butter, lemon zest, and herbs.
+6. Off the heat, beat in parmesan, butter, lemon zest, and herbs.
 
 ## Notes
 
 Keep an extra splash of hot stock nearby to loosen the risotto just before serving.
-</article>

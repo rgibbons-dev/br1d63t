@@ -1,12 +1,26 @@
 ---
+import { formatSeason } from '../data';
+
 const { recipe } = Astro.props;
 const season = recipe.frontmatter.season;
 ---
 
 <article class="recipe-card">
   <a href={recipe.url}>
-    <img src={recipe.frontmatter.image} alt={recipe.frontmatter.title} loading="lazy" />
-    <h3>{recipe.frontmatter.title}</h3>
+    <img
+      src={recipe.frontmatter.image}
+      alt={recipe.frontmatter.imageAlt ?? recipe.frontmatter.title}
+      loading="lazy"
+    />
+    <div class="recipe-card-copy">
+      <p class="recipe-kicker">{formatSeason(season)}</p>
+      <h3>{recipe.frontmatter.title}</h3>
+      {recipe.frontmatter.intro && <p class="recipe-summary">{recipe.frontmatter.intro}</p>}
+      <p class="recipe-meta">
+        {[recipe.frontmatter.serves, recipe.frontmatter.prepTime && `Prep ${recipe.frontmatter.prepTime}`]
+          .filter(Boolean)
+          .join('  /  ')}
+      </p>
+    </div>
   </a>
-  <p class="recipe-meta">{season}</p>
 </article>
