@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RecipeCard from '../../components/RecipeCard.astro';
+import { slugify } from '../../data';
+
+export async function getStaticPaths() {
+  const recipes = await Astro.glob('../../pages/recipes/*.md');
+  const uniqueTags = new Set<string>();
+
+  for (const recipe of recipes) {
+    const recipeTags: string[] = recipe.frontmatter.tags ?? [];
+    recipeTags.forEach((tag) => uniqueTags.add(tag));
+    uniqueTags.add(recipe.frontmatter.season);
+  }
+
+  return Array.from(uniqueTags).map((tag) => ({
+    params: { tag: slugify(tag) },
+    props: { tag }
+  }));
+}
+
+const { tag } = Astro.props;
+const recipes = await Astro.glob('../../pages/recipes/*.md');
+const filtered = recipes.filter((recipe) => {
+  const tags: string[] = recipe.frontmatter.tags ?? [];
+  return slugify(recipe.frontmatter.season) === Astro.params.tag || tags.some((t) => slugify(t) === Astro.params.tag);
+});
+---
+
+<BaseLayout title={`${tag} | Bridget Recipes`}>
+  <h1>{tag}</h1>
+  <div class="recipe-grid">
+    {filtered.map((recipe) => (
+      <RecipeCard recipe={recipe} />
+    ))}
+  </div>
+</BaseLayout>
