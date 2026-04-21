@@ -1,11 +1,16 @@
 FROM node:22-bookworm
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV ROD_CHROME_BIN=/usr/bin/chromium
+ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+ENV PATH="/root/.local/bin:${PATH}"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    bash \
     ca-certificates \
     curl \
     git \
+    procps \
     python3 \
     python3-pip \
     python3-venv \
@@ -30,7 +35,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-ENV PATH="/root/.local/bin:${PATH}"
 
 WORKDIR /workspace
 
