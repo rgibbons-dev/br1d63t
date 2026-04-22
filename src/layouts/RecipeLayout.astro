@@ -12,6 +12,9 @@ const {
   intro,
 } = frontmatter;
 
+const withBase = (path: string) =>
+  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+
 const renderedContent = await Astro.slots.render('default');
 const headingMatches = Array.from(renderedContent.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi));
 const stripTags = (value: string) => value.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim().toLowerCase();
@@ -58,7 +61,7 @@ const remainingSections = sections.filter(
             <p class="recipe-tag-line">
               {tags.map((tag: string, index: number) => (
                 <>
-                  <a href={`/tags/${slugify(tag)}`}>{tag}</a>{index < tags.length - 1 && ' • '}
+                  <a href={withBase(`/tags/${slugify(tag)}`)}>{tag}</a>{index < tags.length - 1 && ' • '}
                 </>
               ))}
             </p>

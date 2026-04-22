@@ -7,6 +7,9 @@ const {
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
+const withBase = (path: string) =>
+  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+const currentPath = pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '') || '/';
 ---
 
 <!doctype html>
@@ -20,12 +23,12 @@ const pathname = Astro.url.pathname;
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a href="/" class="logo">
+        <a href={withBase('/')} class="logo">
           <span class="logo-mark">Bridget</span>
         </a>
         <nav class="nav" aria-label="Main">
-          <a href="/" aria-current={pathname === '/' ? 'page' : undefined}>Home</a>
-          <a href="/all-recipes" aria-current={pathname.startsWith('/all-recipes') ? 'page' : undefined}>All Recipes</a>
+          <a href={withBase('/')} aria-current={currentPath === '/' ? 'page' : undefined}>Home</a>
+          <a href={withBase('/all-recipes')} aria-current={currentPath.startsWith('/all-recipes') ? 'page' : undefined}>All Recipes</a>
         </nav>
       </div>
     </header>

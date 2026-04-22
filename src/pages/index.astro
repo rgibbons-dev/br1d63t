@@ -2,13 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatSeason } from '../data';
 import { seasonShowcase } from '../lib/recipes';
+
+const withBase = (path: string) =>
+  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 ---
 
 <BaseLayout title="Bridget Recipes">
   <section class="home-season-grid">
     {seasonShowcase.map((entry) => (
       <article class="season-card">
-        <a href={`/tags/${entry.season}`}>
+        <a href={withBase(`/tags/${entry.season}`)}>
           <img src={entry.image} alt={entry.imageAlt} />
           <h2>{formatSeason(entry.season)}</h2>
         </a>
