@@ -6,6 +6,7 @@
   --border: rgba(35, 33, 29, 0.16);
   --max-width: 1900px;
   --content-width: 1760px;
+  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -14,10 +15,17 @@
 
 body {
   margin: 0;
-  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+  font-family: var(--font-main);
   color: var(--text);
   background: var(--bg);
   line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-main);
 }
 
 a {
@@ -98,7 +106,7 @@ img {
 .page-intro h1,
 .recipe-copy h1 {
   margin: 0;
-  font-size: clamp(2.8rem, 4vw, 4.3rem);
+  font-size: clamp(2.1rem, 2.8vw, 3.1rem);
   font-weight: 500;
   line-height: 0.98;
 }
@@ -170,7 +178,7 @@ img {
   margin: 0 0 0.7rem;
   font-size: 0.94rem;
   letter-spacing: 0.06em;
-  text-transform: lowercase;
+  text-transform: none;
   color: var(--muted);
 }
 
@@ -338,9 +346,26 @@ img {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .recipe-frame {
+    --recipe-media-col: clamp(30rem, 50vw, 37rem);
+    --recipe-sidebar-col: clamp(16rem, 24vw, 20rem);
+    --recipe-shell-gap: 2.5rem;
+  }
+
+  .recipe-heading {
+    width: min(100%, calc(var(--recipe-media-col) + var(--recipe-sidebar-col) + var(--recipe-shell-gap)));
+    margin: 0 auto 1.5rem;
+  }
+
+  .recipe-copy {
+    max-width: var(--recipe-media-col);
+  }
+
   .recipe-shell {
-    grid-template-columns: minmax(0, 42rem) minmax(16rem, 19rem);
-    gap: 2rem 3rem;
+    grid-template-columns: minmax(0, var(--recipe-media-col)) minmax(0, var(--recipe-sidebar-col));
+    gap: 2rem var(--recipe-shell-gap);
+    width: min(100%, calc(var(--recipe-media-col) + var(--recipe-sidebar-col) + var(--recipe-shell-gap)));
+    margin-inline: auto;
     justify-content: start;
   }
 
@@ -350,7 +375,7 @@ img {
 
   .recipe-main {
     grid-column: 1 / -1;
-    max-width: 42rem;
+    max-width: none;
   }
 }
 
