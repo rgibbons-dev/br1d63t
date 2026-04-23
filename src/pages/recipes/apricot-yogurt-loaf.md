@@ -17,10 +17,15 @@ cookTime: 50 min
 
 ## Ingredients
 
+### Pantry
+
 - 180g plain flour
 - 1 1/2 tsp baking powder
 - 1/2 tsp fine salt
 - 150g caster sugar
+
+### Fridge and fruit
+
 - 2 eggs
 - 180g Greek yogurt
 - 100ml olive oil
