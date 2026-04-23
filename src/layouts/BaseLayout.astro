@@ -1,5 +1,6 @@
 ---
 import '../styles.css';
+import { withBase } from '../lib/urls';
 
 const {
   title = 'Bridget Recipes',
@@ -7,8 +8,6 @@ const {
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
-const withBase = (path: string) =>
-  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 const currentPath = pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '') || '/';
 ---
 

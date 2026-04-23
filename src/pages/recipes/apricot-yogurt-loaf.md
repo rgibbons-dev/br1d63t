@@ -7,7 +7,7 @@ tags:
   - baking
   - breakfast
   - fruit
-image: https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=1400&q=80
+image: /recipes/apricot-yogurt-loaf/hero.png
 imageAlt: A sliced apricot loaf cake on a linen-covered table
 intro: A tender yogurt loaf with chopped apricots and a little lemon zest through the crumb.
 serves: One loaf
