@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { slugify } from '../data';
+import { resolvePublicAssetUrl, withBase } from '../lib/urls';
 
 const frontmatter = Astro.props.frontmatter ?? Astro.props;
 
@@ -11,9 +12,6 @@ const {
   tags = [],
   intro,
 } = frontmatter;
-
-const withBase = (path: string) =>
-  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 
 const renderedContent = await Astro.slots.render('default');
 const headingMatches = Array.from(renderedContent.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi));
@@ -72,7 +70,7 @@ const remainingSections = sections.filter(
 
       <section class="recipe-shell">
         <figure class="recipe-figure">
-          <img class="recipe-hero" src={image} alt={imageAlt} />
+          <img class="recipe-hero" src={resolvePublicAssetUrl(image)} alt={imageAlt} />
         </figure>
 
         {ingredientsSection && (

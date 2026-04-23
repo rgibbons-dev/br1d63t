@@ -1,11 +1,13 @@
 ---
+import { resolvePublicAssetUrl } from '../lib/urls';
+
 const { recipe } = Astro.props;
 ---
 
 <article class="recipe-card">
   <a href={recipe.url}>
     <img
-      src={recipe.frontmatter.image}
+      src={resolvePublicAssetUrl(recipe.frontmatter.image)}
       alt={recipe.frontmatter.imageAlt ?? recipe.frontmatter.title}
       loading="lazy"
     />
